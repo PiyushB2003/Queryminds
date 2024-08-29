@@ -5,6 +5,7 @@ import 'dotenv/config';
 import router from "./Routes/AuthUser.js";
 import chatBotRouter from "./Routes/ChatbotRouter.js";
 import MongoConnect from "./db/Db.js";
+import PaymentRouter from "./Routes/PaymentRouter.js";
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -18,6 +19,7 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use("/api", router);
 app.use("/", chatBotRouter);
+app.use("/payment", PaymentRouter);
 
 // Connect to MongoDB
 MongoConnect();
