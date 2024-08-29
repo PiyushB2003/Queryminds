@@ -15,8 +15,6 @@ app.use(cors({
     credentials: true
 }));
 
-
-
 app.use(bodyParser.json());
 app.use("/api", router);
 app.use("/", chatBotRouter);

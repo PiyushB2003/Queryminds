@@ -16,7 +16,6 @@ const LoginModal = () => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
-    const { count } = useContext(Context);
 
 
     const HandleSubmit = (e) => {
@@ -39,7 +38,7 @@ const LoginModal = () => {
                     localStorage.setItem("loggedInUser", result.data.name);
                     localStorage.setItem("userId", result.data.userId)
                     localStorage.setItem("ColorNumber", (Math.floor(Math.random() * 6) + 1))
-                    localStorage.setItem("QueryCount", count);
+                    window.location.reload();
                     HandleSuccess(result.data.message);
                     navigate("/chatbot");
                 }

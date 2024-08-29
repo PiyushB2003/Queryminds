@@ -1,7 +1,7 @@
 import { Signup } from "../models/Signup.js";
+import { UserChat } from "../models/UserChats.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { UserChat } from "../models/UserChats.js";
 
 const SignupController = async (req, res) => {
     try {
@@ -78,5 +78,6 @@ const UserChatsController = async (req, res) => {
         return res.status(500).json({ message: "Internal server error", success: false });
     }
 }
+
 
 export { SignupController, LoginController, UserChatsController };
