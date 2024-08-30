@@ -30,7 +30,7 @@ const LoginModal = () => {
             HandleError("Password length must be at least 8 characters");
         }
 
-        axios.post("http://localhost:5000/api/login", { email, password })
+        axios.post(`${import.meta.env.VITE_BACKEND_HOST_URL}/api/login`, { email, password })
             .then(result => {
                 if (result.data.success) {
                     localStorage.setItem("token", result.data.jwtToken);

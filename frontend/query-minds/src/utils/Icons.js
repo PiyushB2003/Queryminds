@@ -27,8 +27,12 @@ import AddIcon from '@mui/icons-material/Add';
 import ChatIcon from '@mui/icons-material/Chat';
 import PanoramaFishEyeIcon from '@mui/icons-material/PanoramaFishEye';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import PersonIcon from '@mui/icons-material/Person';
 
 export {
+    PersonIcon,
+    CloseRoundedIcon,
     CurrencyRupeeIcon,
     PanoramaFishEyeIcon,
     HomeIcon,

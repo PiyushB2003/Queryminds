@@ -39,7 +39,7 @@ const SignupModal = () => {
             return;
         }
 
-        axios.post('http://localhost:5000/api/signup', { name, email, password, confirmPassword })
+        axios.post(`${import.meta.env.VITE_BACKEND_HOST_URL}/api/signup`, { name, email, password, confirmPassword })
             .then(result => {
                 if (result.data.success) {
                     HandleSuccess(result.data.message);

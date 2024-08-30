@@ -8,12 +8,12 @@ import {
 const ChatPageSerachBar = () => {
     const [height, setHeight] = useState('auto');
     const [isExpanding, setIsExpanding] = useState(false);
-    const {text, setText, HandleSubmit} = useContext(Context)
+    const { text, setText, HandleSubmit } = useContext(Context)
     const textareaRef = useRef(null);
 
     const adjustTextareaHeight = () => {
         const textarea = textareaRef.current;
-
+        // setHeight("10px");
         // Reset height to auto to allow shrinking
         textarea.style.height = 'auto';
 
@@ -37,6 +37,7 @@ const ChatPageSerachBar = () => {
         // Clear the text after submitting
         setText('');
     };
+
     return (
         <>
             <div className=" bg-[#040B35] w-full flex flex-col items-center justify-center">

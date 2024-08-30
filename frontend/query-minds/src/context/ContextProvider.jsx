@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Context } from './Context';
 import { v4 as uuidv4 } from 'uuid';
-
+import 'react-toastify/dist/ReactToastify.css';
+import { HandleError, HandleSuccess } from '../utils/Utils.js';
+import { useNavigate } from 'react-router-dom';
 
 const ContextProvider = (props) => {
     const [text, setText] = useState("");
@@ -17,10 +19,19 @@ const ContextProvider = (props) => {
     const [number, setNumber] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [count, setCount] = useState(0);
+    const [isPaymentDone, setIsPaymentDone] = useState(false);
+    const navigate = useNavigate();
+
+    const ColorPicker = {
+        1: "#FF8343",
+        2: "#295F98",
+        3: "#FABC3F",
+        4: "#C40C0C",
+        5: "#41B3A2",
+        6: "#06D001"
+    }
 
     const HandleSubmit = () => {
-        // e?.preventDefault();
-        // e.target.value = "";
         setResultData("");
         setLoading(true);
         setShowResult(true);
@@ -39,7 +50,7 @@ const ContextProvider = (props) => {
             "Content-Type": "application/json"
         };
 
-        axios.post(`${import.meta.env.BACKEND_HOST_URL}/chatbot`, { text, userId }, { headers })
+        axios.post(`${import.meta.env.VITE_BACKEND_HOST_URL}/chatbot`, { text, userId }, { headers })
             .then(result => {
                 setResultData(result.data.response);
                 setLoading(false);
@@ -49,20 +60,30 @@ const ContextProvider = (props) => {
                 setLoading(false);
             });
     };
+    const HandleLogout = async () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("loggedInUserEmail");
+        localStorage.removeItem("loggedInUser");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("ColorNumber");
+        HandleSuccess("Logged out successful");
+        setIsAuthenticated(false);
+        navigate("/");
+    };
     const GetFirstName = () => {
         let firstname = username?.split(" ")[0];
         return firstname;
     };
 
     function getInitials() {
-        const nameParts = fullname.trim().split(" ");
+        const nameParts = fullname?.trim()?.split(" ");
 
-        if (nameParts.length === 1) {
-            return fullname.charAt(0).toUpperCase(); // For a single name
+        if (nameParts?.length === 1) {
+            return fullname?.charAt(0)?.toUpperCase(); // For a single name
         }
 
-        const firstNameInitial = nameParts[0].charAt(0).toUpperCase();
-        const lastNameInitial = nameParts[nameParts.length - 1].charAt(0).toUpperCase();
+        const firstNameInitial = nameParts[0]?.charAt(0)?.toUpperCase();
+        const lastNameInitial = nameParts[nameParts?.length - 1].charAt(0)?.toUpperCase();
 
         return firstNameInitial + lastNameInitial;
     }
@@ -78,6 +99,7 @@ const ContextProvider = (props) => {
     }, []);
 
     const contextValue = {
+        ColorPicker,
         prevPrompts,
         recentPrompt,
         showResult,
@@ -87,6 +109,7 @@ const ContextProvider = (props) => {
         username,
         userEmail,
         isAuthenticated,
+        isPaymentDone,
         number,
         count,
         setCount,
@@ -97,13 +120,15 @@ const ContextProvider = (props) => {
         setShowResult,
         setText,
         setUsername,
+        HandleLogout,
         setFullname,
         HandleSubmit,
         setResultData,
         GetFirstName,
         getRandomNumber,
         getInitials,
-        setIsAuthenticated
+        setIsAuthenticated,
+        setIsPaymentDone
     }
 
 

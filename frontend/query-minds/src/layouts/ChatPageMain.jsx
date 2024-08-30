@@ -7,10 +7,10 @@ import {
     LightbulbIcon,
     SchoolRoundedIcon,
     DriveFileRenameOutlineIcon,
-} from "../utils/Icons.js"
+} from "../utils/Icons.js";
 
 const ChatPageMain = () => {
-    const { recentPrompt, setRecentPrompt, text, setText, resultData, showResult, GetFirstName, loading } = useContext(Context)
+    const { recentPrompt, setRecentPrompt, setText, resultData, showResult, GetFirstName, loading } = useContext(Context)
 
     const handlePromptClick = useCallback((prompt) => {
         setText(prompt);
@@ -18,6 +18,38 @@ const ChatPageMain = () => {
         console.log("Recent prompt", recentPrompt);
 
     }, [setRecentPrompt]);
+
+
+    const SuggestionDataArray = [
+        {
+            text: "How to improve readability of code",
+            ClickFuntion: () => {
+                handlePromptClick("How to improve readability of code")
+            },
+            icon: <CodeRoundedIcon className="text-pink-400" />
+        },
+        {
+            text: "Tips to write professional email",
+            ClickFuntion: () => {
+                handlePromptClick("Tips to write professional email")
+            },
+            icon: <SchoolRoundedIcon className="text-[#76D0EB]" />
+        },
+        {
+            text: "Plan a daily routine for you",
+            ClickFuntion: () => {
+                handlePromptClick("Plan a daily routine for you")
+            },
+            icon: <LightbulbIcon className="text-[#E2C541]" />
+        },
+        {
+            text: "Message to comfort a friend",
+            ClickFuntion: () => {
+                handlePromptClick("Message to comfort a friend")
+            },
+            icon: <DriveFileRenameOutlineIcon className="text-[#CB8BD0]" />
+        },
+    ]
 
     useEffect(() => {
         console.log("Recent prompt updated:", recentPrompt);
@@ -40,30 +72,18 @@ const ChatPageMain = () => {
                     </div>
 
                     <div className="w-full h-full scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-track-[#0c1649]  overflow-y-auto flex items-center justify-center flex-wrap">
-                        <span onClick={() => handlePromptClick("How to improve readability of code")} className="border border-gray-700 hover:bg-[#0d1540] cursor-pointer h-[130px] rounded-xl mx-3 w-[170px] flex flex-col">
-                            <span className="px-2 pt-2">
-                                <CodeRoundedIcon className="text-pink-400" />
-                            </span>
-                            <span className="text-white px-3 pt-2">How to improve readability of code</span>
-                        </span>
-                        <span onClick={() => handlePromptClick("Tips to write professional email")} className="border border-gray-700 hover:bg-[#0d1540] cursor-pointer h-[130px] rounded-xl mx-3 w-[170px] flex flex-col">
-                            <span className="px-2 pt-2">
-                                <SchoolRoundedIcon className="text-[#76D0EB]" />
-                            </span>
-                            <span className="text-white px-3 pt-2">Tips to write professional email</span>
-                        </span>
-                        <span onClick={() => handlePromptClick("Plan a daily routine for you")} className="border border-gray-700 hover:bg-[#0d1540] cursor-pointer h-[130px] rounded-xl mx-3 w-[170px] flex flex-col">
-                            <span className="px-2 pt-2">
-                                <LightbulbIcon className="text-[#E2C541]" />
-                            </span>
-                            <span className="text-white px-3 pt-2">Plan a daily routine for you</span>
-                        </span>
-                        <span onClick={() => handlePromptClick("Message to comfort a friend")} className="border border-gray-700 hover:bg-[#0d1540] cursor-pointer h-[130px] rounded-xl mx-3 w-[170px] flex flex-col">
-                            <span className="px-2 pt-2">
-                                <DriveFileRenameOutlineIcon className="text-[#CB8BD0]" />
-                            </span>
-                            <span className="text-white px-3 pt-2">Message to comfort a friend</span>
-                        </span>
+                        {
+                            SuggestionDataArray.map((obj, index) => {
+                                return (
+                                    <span key={index} onClick={obj.ClickFuntion} className="border border-gray-700 hover:bg-[#0d1540] cursor-pointer h-[130px] rounded-xl mx-3 w-[170px] flex flex-col">
+                                        <span className="px-2 pt-2">
+                                            {obj.icon}
+                                        </span>
+                                        <span className="text-white px-3 pt-2">{obj.text}</span>
+                                    </span>
+                                )
+                            })
+                        }
                     </div>
                 </>
             ) : (

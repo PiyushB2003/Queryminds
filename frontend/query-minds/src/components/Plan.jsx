@@ -1,13 +1,16 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, { useState, useRef, useEffect, useContext } from 'react'
 import {
     ArrowDropUpIcon,
     ArrowDropDownIcon,
     AutoAwesomeIcon,
     CheckCircleOutlineIcon,
 } from "../utils/Icons.js"
+import { NavLink } from 'react-router-dom';
+import { Context } from '../context/Context.js';
 
 const Plan = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const { isPaymentDone } = useContext(Context);
     const dropdownRef = useRef(null);
 
     const handleClickOutside = (event) => {
@@ -44,17 +47,25 @@ const Plan = () => {
                                     <span className='mx-1'><AutoAwesomeIcon className='text-[#3196DC] scale-[0.8]' /></span>
                                     <span className='mx-1'>Queryminds</span>
                                 </span>
-                                <span className='flex flex-row items-center'>
-                                    <CheckCircleOutlineIcon />
-                                </span>
+                                {
+                                    (isPaymentDone) ? "" : <span className='flex flex-row items-center'>
+                                        <CheckCircleOutlineIcon />
+                                    </span>
+                                }
                             </li>
-                            <li className="pl-2 pr-4 py-2 mx-2 rounded-xl hover:bg-gray-700 cursor-pointer flex justify-between items-center">
-                                <span className='flex flex-row items-center'>
-                                    <span className='mx-1'><AutoAwesomeIcon className='text-[#D6615E] scale-[0.8]' /></span>
-                                    <span className='mx-1'>Queryminds Pro</span>
-                                </span>
-                                <span className='text-sm py-1 px-3 text-white rounded-full bg-black flex flex-row items-center'>Upgrade</span>
-                            </li>
+                            <NavLink to="/pricing">
+                                <li className="pl-2 pr-4 py-2 mx-2 rounded-xl hover:bg-gray-700 cursor-pointer flex justify-between items-center">
+                                    <span className='flex flex-row items-center'>
+                                        <span className='mx-1'><AutoAwesomeIcon className='text-[#D6615E] scale-[0.8]' /></span>
+                                        <span className='mx-1'>Queryminds Premium</span>
+                                    </span>
+                                    {
+                                        isPaymentDone ? <span className='flex flex-row items-center'>
+                                            <CheckCircleOutlineIcon />
+                                        </span> : <span className='text-sm py-1 px-3 text-white rounded-full bg-black flex flex-row items-center'>Upgrade</span>
+                                    }
+                                </li>
+                            </NavLink>
                         </ul>
                     </div>
                 )}

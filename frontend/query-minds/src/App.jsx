@@ -31,22 +31,22 @@ function PrivateRoute({ element }) {
 
 function App() {
   return (
-    <ContextProvider>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
+    <BrowserRouter>
+      <ContextProvider>
+        <QueryClientProvider client={queryClient}>
           <RefreshHandler />
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/chatbot' element={<PrivateRoute element={<ChatBot />} />} />
-            <Route path='/pricing' element={<Pricing />} />
+            <Route path='/pricing' element={<PrivateRoute element={<Pricing />} />} />
             <Route path='/signup' element={<SignupModal />} />
             <Route path='/login' element={<LoginModal />} />
             <Route path='*' element={<Error />} />
           </Routes>
           <ToastContainer />
-        </BrowserRouter>
-      </QueryClientProvider>
-    </ContextProvider>
+        </QueryClientProvider>
+      </ContextProvider>
+    </BrowserRouter>
   );
 }
 
