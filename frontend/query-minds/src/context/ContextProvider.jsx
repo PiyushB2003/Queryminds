@@ -39,7 +39,7 @@ const ContextProvider = (props) => {
             "Content-Type": "application/json"
         };
 
-        axios.post("http://localhost:5000/chatbot", { text, userId }, { headers })
+        axios.post(`${import.meta.env.BACKEND_HOST_URL}/chatbot`, { text, userId }, { headers })
             .then(result => {
                 setResultData(result.data.response);
                 setLoading(false);

@@ -37,10 +37,14 @@ PaymentRouter.post("/order", (req, res) => {
 
 PaymentRouter.post("/verify", async (req, res) => {
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+    console.log(req.body);
+    
     try {
         const sign = razorpay_order_id + "|" + razorpay_payment_id;
 
         const expectedSign = crypto.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
+        .update(sign.toString())
+        .digest("hex")
 
         console.log(razorpay_signature === expectedSign);
 
