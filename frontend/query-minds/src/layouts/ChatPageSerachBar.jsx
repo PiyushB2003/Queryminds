@@ -51,11 +51,14 @@ const ChatPageSerachBar = () => {
                             onChange={(e) => setText(e.target.value)}
                         />
 
-                        <div className='flex text-gray-700 dark:text-white'>
-                            <button type='submit' className='md:p-3 p-1 mr-3 cursor-pointer dark:hover:bg-gray-700 rounded-full flex justify-center items-center'>
-                                <SendIcon />
-                            </button>
-                        </div>
+                        {
+                            text && <div className='flex text-gray-700 dark:text-white'>
+                                <button type='submit' className='md:p-3 p-1 mr-3 cursor-pointer dark:hover:bg-gray-700 rounded-full flex justify-center items-center'>
+                                    <SendIcon />
+                                </button>
+                            </div>
+                        }
+
                     </form>
                 </div>
                 <p className='md:text-sm text-[12px] leading-4 text-gray-600 dark:text-white py-3'>QueryMinds can make mistakes, <span className='sm:hidden'>So check again</span> <span className='hidden sm:inline'>so double-check its responses.</span></p>
