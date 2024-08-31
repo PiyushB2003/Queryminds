@@ -9,14 +9,10 @@ import LoginModal from './pages/LoginModal';
 import Pricing from './pages/Pricing';
 import Error from './pages/Error';
 import RefreshHandler from './components/RefreshHandler';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import './index.css';
 import { Context } from './context/Context';
 import ContextProvider from './context/ContextProvider';
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";

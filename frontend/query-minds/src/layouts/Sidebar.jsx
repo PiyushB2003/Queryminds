@@ -1,6 +1,5 @@
-import React, { useContext, useState, useCallback } from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useQuery, QueryClient } from '@tanstack/react-query';
 import { Context } from '../context/Context';
 import {
     MenuIcon,
@@ -14,7 +13,7 @@ import {
 
 
 const Sidebar = () => {
-    const { setRecentPrompt, setShowResult, count, setCount, expanded, setExpanded, handleClick, isPending, error, data, btn, setBtn } = useContext(Context);
+    const { setShowResult, expanded, setExpanded, handleClick, error, data, btn, setBtn } = useContext(Context);
 
 
     if (error) {

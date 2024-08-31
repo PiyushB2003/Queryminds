@@ -12,12 +12,11 @@ import {
     ChatIcon
 } from "../utils/Icons.js"
 import { Context } from '../context/Context.js';
-import Sidebar from './Sidebar.jsx';
 import { NavLink } from 'react-router-dom';
 
 const ChatPageHeader = () => {
     const [isExpandSmall, setIsExpandSmall] = useState(false);
-    const { setShowResult, setExpanded, expanded, ColorPicker, number, getInitials, handleClick, isPending, error, data, btn, setBtn, userEmail, HandleLogout, fullname } = useContext(Context);
+    const { setShowResult, ColorPicker, number, getInitials, handleClick, data, btn, setBtn, userEmail, HandleLogout } = useContext(Context);
     return (
         <>
             <div className="flex items-center justify-between py-4 px-5 dark:text-white text-gray-700 bg-white dark:bg-[#040B35]">

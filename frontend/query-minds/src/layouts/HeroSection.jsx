@@ -1,5 +1,4 @@
 import React from 'react';
-import MySlider from './MySlider';
 import { NavLink } from 'react-router-dom';
 import {
     AutoAwesomeRoundedIcon

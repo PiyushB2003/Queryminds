@@ -3,9 +3,9 @@ import axios from 'axios';
 import { Context } from './Context';
 import { v4 as uuidv4 } from 'uuid';
 import 'react-toastify/dist/ReactToastify.css';
-import { HandleError, HandleSuccess } from '../utils/Utils.js';
+import { HandleSuccess } from '../utils/Utils.js';
 import { useNavigate } from 'react-router-dom';
-import { useQuery, QueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 const ContextProvider = (props) => {
     const [text, setText] = useState("");

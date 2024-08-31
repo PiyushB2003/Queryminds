@@ -35,8 +35,6 @@ const ChatPageMain = () => {
 
     const handlePromptClick = useCallback((prompt) => {
         setText(prompt);
-        console.log("Prompt selected:", prompt);
-        console.log("Recent prompt", recentPrompt);
     }, [setRecentPrompt]);
 
     const SuggestionDataArray = [
@@ -98,7 +96,7 @@ const ChatPageMain = () => {
                             <span
                                 key={index}
                                 onClick={obj.ClickFuntion}
-                                className="border-none dark:border-gray-700 bg-[#f0f4f9] hover:bg-[#DDE3EA] dark:bg-transparent dark:bg-[#0d1540] dark:hover:bg-[#17205b] cursor-pointer md:my-0 my-3 h-[130px] rounded-xl dark:border mx-3 w-[170px] flex flex-col"
+                                className="dark:border-gray-700 bg-[#f0f4f9] hover:bg-[#DDE3EA] dark:bg-transparent dark:bg-[#0d1540] dark:hover:bg-[#192151] cursor-pointer md:my-0 my-3 h-[130px] rounded-xl dark:border mx-3 w-[170px] flex flex-col"
                             >
                                 <span className="px-2 pt-2">
                                     {obj.icon}

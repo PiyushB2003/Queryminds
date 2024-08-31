@@ -17,7 +17,6 @@ const Header = () => {
     const [isClickedProfile, setIsCLickedProfile] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const { isAuthenticated, userEmail, btn, setBtn, ColorPicker, HandleLogout, number, getInitials } = useContext(Context);
-    console.log(isAuthenticated);
 
 
     useEffect(() => {
@@ -46,13 +45,11 @@ const Header = () => {
                     <div className="md:flex items-center justify-center hidden">
                         <span className="cursor-pointer text-gray-500 dark:hover:text-white hover:text-black flex items-center mx-6 md:mx-2">
                             <NavLink to="/chatbot" className="flex items-center">
-                                {/* <AutoAwesomeRoundedIcon /> */}
                                 <span className="text-lg font-semibold ml-2">Ask anything</span>
                             </NavLink>
                         </span>
                         <span className="text-gray-500 dark:hover:text-white hover:text-black cursor-pointer flex items-center mx-6 md:mx-2">
                             <NavLink to="/pricing" className="flex items-center">
-                                {/* <AttachMoneyRoundedIcon /> */}
                                 <span className="text-lg font-semibold ml-2">Pricing</span>
                             </NavLink>
                         </span>
@@ -82,7 +79,7 @@ const Header = () => {
                         <span className='text-lg mx-2 font-semibold'>Ask anything</span>
                     </NavLink>
                 </span>
-                <span className='flex text-gray-500 hover:text-black dark:hover:text-white cursor-pointer items-center mx-6 hover:text-white'>
+                <span className='flex text-gray-500 hover:text-black dark:hover:text-white cursor-pointer items-center mx-6'>
                     <NavLink to="/pricing" className="flex items-center">
                         <span className='text-lg mx-2 font-semibold'>Pricing</span>
                     </NavLink>
@@ -135,7 +132,7 @@ const Header = () => {
             <div className='h-full md:flex items-center mx-8 hidden'>
 
                 <span className='mr-3'>
-                    <button className='text-white bg-[#323a60] size-10 rounded-full flex items-center justify-center' onClick={() => setBtn(curr => !curr)}>
+                    <button className='dark:text-white dark:bg-[#323a60] bg-zinc-200 text-gray-600 size-10 rounded-full flex items-center justify-center' onClick={() => setBtn(curr => !curr)}>
                         {
                             btn ? <LightModeIcon /> : <DarkModeIcon />
                         }

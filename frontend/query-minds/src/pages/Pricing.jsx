@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
-import { HandleError, HandleSuccess } from '../utils/Utils.js';
-import { HomeIcon, CurrencyRupeeIcon } from "../utils/Icons.js"
+import { HandleSuccess } from '../utils/Utils.js';
+import { HomeIcon } from "../utils/Icons.js"
 import { NavLink, useNavigate } from 'react-router-dom'
 import { Context } from '../context/Context.js';
 
@@ -22,9 +22,7 @@ const Pricing = () => {
           }
         }
       );
-
       const data = res.data;
-      console.log(data);
       HandlePaymentVerify(data.data)
     } catch (error) {
       console.log(error);
@@ -44,7 +42,6 @@ const Pricing = () => {
       description: "Test Mode",
       order_id: data.id,
       handler: async (response) => {
-        console.log("response", response);
         try {
           const res = await axios.post(
             `${import.meta.env.VITE_BACKEND_HOST_URL}/payment/verify`,
@@ -63,7 +60,6 @@ const Pricing = () => {
           const verifyData = res.data;
 
           if (verifyData.message) {
-            console.log("Payment is done")
             setIsPaymentDone(true);
             HandleSuccess(verifyData.message);
             navigate("/chatbot");

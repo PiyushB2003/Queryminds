@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { HandleError, HandleSuccess } from '../utils/Utils.js';
@@ -8,7 +8,6 @@ import {
     VisibilityOffRoundedIcon,
     VisibilityRoundedIcon
 } from "../utils/Icons.js"
-import { Context } from '../context/Context.js';
 
 const LoginModal = () => {
     const [error, setError] = useState('');
@@ -46,20 +45,21 @@ const LoginModal = () => {
             .catch(error => {
                 if (!isConflict) {
                     HandleError("Authentication failed, email or password is wrong");
+                    throw error;
                 }
             });
     }
 
     return (
-        <div className="min-h-screen w-screen flex flex-col items-center bg-[#040B35]">
-            <div className='h-[10%] m-5 flex items-center px-5 w-full text-white'>
+        <div className="min-h-screen w-screen flex flex-col items-center bg-white dark:bg-[#040B35]">
+            <div className='h-[10%] m-5 flex items-center px-5 w-full text-gray-600 dark:text-white'>
                 <NavLink to="/">
-                    <span className='p-2 rounded-full bg-slate-700 flex items-center justify-center cursor-pointer hover:bg-slate-600'>
+                    <span className='p-2 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center cursor-pointer hover:bg-zinc-300'>
                         <HomeIcon className=' scale-110' />
                     </span>
                 </NavLink>
             </div>
-            <div className="relative bg-white rounded-lg px-6 sm:px-8 pb-3 shadow-lg w-11/12 sm:w-96">
+            <div className="relative bg-[#e5efff] text-gray-600 dark:text-black dark:bg-white rounded-lg px-6 sm:px-8 pb-3 shadow-lg w-11/12 sm:w-96">
                 <h2 className="text-2xl font-semibold text-center mb-6 mt-6">Log In</h2>
 
                 <form onSubmit={HandleSubmit}>
@@ -68,7 +68,7 @@ const LoginModal = () => {
                         <input
                             type="email"
                             placeholder="your@gmail.com"
-                            className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full border bg-transparent border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
@@ -77,7 +77,7 @@ const LoginModal = () => {
                         <label className="block text-sm font-semibold mb-2">Password</label>
                         <input
                             type={showPassword ? "text" : "password"}
-                            className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full border bg-transparent border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         {password &&

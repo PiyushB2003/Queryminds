@@ -53,19 +53,20 @@ const SignupModal = () => {
                     HandleError("An error occurred during signup. Please try again.");
                 }
                 console.error(err);
+                throw err;
             });
     };
 
     return (
-        <div className="flex flex-col min-h-screen w-screen items-center bg-[#040B35]">
-            <div className="h-[10%] m-5 flex items-center px-6 w-full text-white">
+        <div className="flex flex-col min-h-screen w-screen items-center bg-white dark:bg-[#040B35]">
+            <div className="h-[10%] m-5 flex items-center px-6 w-full text-gray-600 dark:text-white">
                 <NavLink to="/">
-                    <span className="p-2 rounded-full bg-slate-700 flex items-center justify-center cursor-pointer hover:bg-slate-600">
+                    <span className="p-2 rounded-full bg-zinc-200 dark:bg-slate-700 flex items-center justify-center cursor-pointer hover:bg-zinc-300 dark:hover:bg-slate-600">
                         <HomeIcon className="scale-110" />
                     </span>
                 </NavLink>
             </div>
-            <div className="relative bg-white mb-5 rounded-lg px-6 sm:px-8 py-6 shadow-lg w-11/12 sm:w-96">
+            <div className="relative dark:bg-white bg-[#e5efff] text-gray-600 dark:text-black mb-5 rounded-lg px-6 sm:px-8 py-6 shadow-lg w-11/12 sm:w-96">
                 <h2 className="text-xl sm:text-2xl font-semibold text-center mb-4 sm:mb-5">Sign up for free</h2>
 
                 <form onSubmit={handleSubmit}>
@@ -76,10 +77,9 @@ const SignupModal = () => {
                             placeholder="Eg. Piyush Borkar"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full bg-transparent border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
-
                     <div className="mb-4">
                         <label className="block text-sm font-semibold mb-1">Email Address</label>
                         <input
@@ -87,7 +87,7 @@ const SignupModal = () => {
                             placeholder="your@gmail.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full bg-transparent border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -97,7 +97,7 @@ const SignupModal = () => {
                             type={showPassword ? "text" : "password"}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full bg-transparent border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         {password &&
                             <button
@@ -116,7 +116,7 @@ const SignupModal = () => {
                             type={showConfirmPassword ? "text" : "password"}
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
-                            className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full bg-transparent border border-gray-300 rounded-lg py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         {confirmPassword &&
                             <button
