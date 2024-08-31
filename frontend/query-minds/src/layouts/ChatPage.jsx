@@ -18,7 +18,7 @@ const ChatPage = ({ setIsAuthenticated }) => {
     }, []);
 
     return (
-        <div className="flex-1 flex flex-col h-screen bg-[#040B35]">
+        <div className="flex-1 flex flex-col h-screen bg-white dark:bg-[#040B35]">
             <ChatPageHeader />
             <ChatPageMain setIsAuthenticated={setIsAuthenticated} />
             <ChatPageSerachBar />

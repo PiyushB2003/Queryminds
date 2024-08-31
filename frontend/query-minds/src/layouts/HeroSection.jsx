@@ -7,7 +7,7 @@ import {
 
 const HeroSection = () => {
     return (
-        <div className='h-screen w-full bg-[#040B35]'>
+        <div className='h-screen w-full bg-white dark:bg-[#040B35]'>
             <div className='flex flex-col mt-10 items-center justify-center w-full max-w-screen-xl mx-auto px-4'>
                 <div className='my-1 flex items-center'>
                     <img src="./images/logo.png" alt="robot-logo" className='md:w-16 md:h-16 size-10 mx-1' />
@@ -15,8 +15,8 @@ const HeroSection = () => {
                         Queryminds
                     </h1>
                 </div>
-                <div className='my-2 text-xl text-white md:text-3xl font-bold text-center'>
-                    <h2 className='text-gray-500 md:text-white'>
+                <div className='my-2 text-xl text-[#C4C7C5] dark:text-white md:text-3xl font-bold text-center'>
+                    <h2 className='text-[#C4C7C5] dark:text-gray-500 dark:md:text-white'>
                         Where every question meets its answer
                     </h2>
                     <h2>

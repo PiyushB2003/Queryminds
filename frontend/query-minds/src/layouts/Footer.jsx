@@ -9,7 +9,7 @@ import {
 
 const Footer = () => {
     return (
-        <footer className="bg-[#0C1649] text-white py-10 sm:py-16 lg:py-20">
+        <footer className="dark:bg-[#0C1649] bg-[#D4DAE1] text-gray-700 dark:text-white py-10 sm:py-16 lg:py-20">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div>
@@ -21,15 +21,15 @@ const Footer = () => {
                                 </h3>
                             </NavLink>
                         </div>
-                        <p className="text-gray-400 mb-4 text-sm sm:text-base">
+                        <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm sm:text-base">
                             Creating something great for the web. Your slogan or mission statement goes here.
                         </p>
                         <h2 className="text-lg sm:text-xl font-semibold mb-2">Follow Us</h2>
                         <div className="flex space-x-4">
-                            <a href="https://www.linkedin.com/in/piyushborkar/" target="_blank" className="text-gray-400 hover:text-white">
+                            <a href="https://www.linkedin.com/in/piyushborkar/" target="_blank" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
                                 <LinkedInIcon />
                             </a>
-                            <a href="https://www.instagram.com/_piyush_borkar_" target="_blank" className="text-gray-400 hover:text-white">
+                            <a href="https://www.instagram.com/_piyush_borkar_" target="_blank" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white">
                                 <InstagramIcon />
                             </a>
                         </div>
@@ -38,20 +38,20 @@ const Footer = () => {
                     <div>
                         <h2 className="text-lg sm:text-xl font-bold mb-4">Quick Links</h2>
                         <ul className="space-y-2">
-                            <li><NavLink to="/" className="text-gray-400 hover:text-white hover:underline">Home</NavLink></li>
-                            <li><NavLink to="/chatbot" className="text-gray-400 hover:text-white hover:underline">Ask query</NavLink></li>
-                            <li><NavLink to="/pricing" className="text-gray-400 hover:text-white hover:underline">Pricing</NavLink></li>
+                            <li><NavLink to="/" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:underline">Home</NavLink></li>
+                            <li><NavLink to="/chatbot" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:underline">Ask query</NavLink></li>
+                            <li><NavLink to="/pricing" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:underline">Pricing</NavLink></li>
                         </ul>
                     </div>
 
                     <div>
                         <h2 className="text-lg sm:text-xl font-bold mb-4">Contact Us</h2>
                         <div className="flex flex-col space-y-2">
-                            <div className="flex items-center text-gray-400">
+                            <div className="flex items-center text-gray-600 dark:text-gray-400">
                                 <EmailRoundedIcon className="mr-2" />
                                 <span>piyushborkar95@gmail.com</span>
                             </div>
-                            <div className="flex items-center text-gray-400">
+                            <div className="flex items-center text-gray-600 dark:text-gray-400">
                                 <LocalPhoneRoundedIcon className="mr-2" />
                                 <span>+91 097-6405-7350</span>
                             </div>

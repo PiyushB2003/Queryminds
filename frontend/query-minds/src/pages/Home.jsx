@@ -11,9 +11,10 @@ const Home = () => {
         setUsername,
         setFullname,
         setNumber,
+        btn
     } = useContext(Context);
     return (
-        <div className='h-auto w-screen bg-[#040B35] '>
+        <div className={`h-auto w-screen bg-white dark:bg-[#040B35] `}>
             <Header />
             <HeroSection />
             <Footer />

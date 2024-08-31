@@ -20,7 +20,7 @@ const ChatPageHeader = () => {
     const { setShowResult, setExpanded, expanded, ColorPicker, number, getInitials, handleClick, isPending, error, data, btn, setBtn, userEmail, HandleLogout, fullname } = useContext(Context);
     return (
         <>
-            <div className="flex items-center justify-between py-4 px-5 text-white bg-[#040B35]">
+            <div className="flex items-center justify-between py-4 px-5 dark:text-white text-gray-700 bg-white dark:bg-[#040B35]">
                 <div className='flex items-center justify-between w-full'>
                     <div className='sm:hidden'>
                         <span className=' transition-all duration-500' onClick={() => setIsExpandSmall(curr => !curr)} >
@@ -30,14 +30,14 @@ const ChatPageHeader = () => {
                     <Plan />
                     <Profile />
                     <div className='sm:hidden' onClick={() => setShowResult(false)}>
-                        <span className='p-1 bg-gray-700 rounded-full flex items-center justify-center'>
+                        <span className='p-1 bg-gray-700 text-white rounded-full flex items-center justify-center'>
                             <AddIcon />
                         </span>
                     </div>
                 </div>
-                <div className={` ${isExpandSmall ? "sm:hidden absolute w-full bg-[#0c1649] h-full inset-0 flex flex-col" : "sm:hidden absolute w-full bg-[#0c1649] h-full inset-0 hidden flex-col"} `}>
+                <div className={` ${isExpandSmall ? "sm:hidden absolute w-full bg-[#F0F4F9] dark:bg-[#0c1649] h-full inset-0 flex flex-col" : "sm:hidden absolute w-full dark:bg-[#0c1649] bg-[#F0F4F9] h-full inset-0 hidden flex-col"} `}>
                     {/* Header */}
-                    <header className='flex justify-between items-center p-4 bg-[#0c1649] text-white border-b border-gray-700'>
+                    <header className='flex justify-between items-center p-4 bg-[#F0F4F9] dark:bg-[#0c1649] dark:text-white text-gray-600 border-b dark:border-gray-700 border-gray-300'>
                         <div className='flex items-center justify-center'>
                             <div className='mx-3'>
                                 <button className='text-lg transition-all duration-500 font-semibold' onClick={() => setIsExpandSmall(curr => !curr)}><MenuOpenIcon className='scale-125' /></button>
@@ -50,9 +50,9 @@ const ChatPageHeader = () => {
                         </div>
                         <div className='flex items-center justify-center'>
                             <div className='mx-3'>
-                                <button className='text-lg font-semibold' onClick={() => setBtn(btn === "light" ? "dark" : "light")}>
+                                <button className='text-lg font-semibold' onClick={() => setBtn(curr => !curr)}>
                                     {
-                                        btn === "light" ? <LightModeIcon /> : <DarkModeIcon />
+                                        btn ? <LightModeIcon /> : <DarkModeIcon />
                                     }
                                 </button>
                             </div>
@@ -63,15 +63,15 @@ const ChatPageHeader = () => {
                     </header>
 
                     {/* Chat Section */}
-                    <div className='flex-1 overflow-y-auto p-4 bg-[#0c1649]'>
-                        <div className=' p-4 rounded-lg text-white'>
+                    <div className='flex-1 overflow-y-auto p-4 bg-[#F0F4F9] dark:bg-[#0c1649]'>
+                        <div className=' p-4 rounded-lg dark:text-white text-gray-600'>
                             {/* Chat messages/content go here */}
                             <div>
                                 {data?.slice().reverse().map(chat => (
                                     <button
                                         onClick={() => handleClick(chat.title)}
                                         key={chat._id}
-                                        className="w-full text-left py-2 px-1 rounded-lg hover:bg-gray-700 text-sm font-semibold"
+                                        className="w-full text-left py-2 px-1 rounded-lg dark:hover:bg-gray-700 hover:bg-[#d6e6ff] text-sm font-semibold"
                                     >
                                         <span className='px-1'><ChatIcon className='scale-75' /></span>
                                         <span className='pl-2'>{(chat.title.length <= 30) ? chat.title : `${chat.title.substring(0, 30)}...`}</span>
@@ -83,7 +83,7 @@ const ChatPageHeader = () => {
                     </div>
 
                     {/* Footer - Dark/Light Theme Button */}
-                    <footer className='p-4 border-t border-gray-700 bg-[#0c1649] text-white flex items-center justify-between'>
+                    <footer className='p-4 border-t dark:border-gray-700 border-gray-300 dark:bg-[#0c1649] bg-[#F0F4F9] dark:text-white text-gray-600 flex items-center justify-between'>
                         <div className='flex items-center justify-center'>
                             <div
                                 className={`size-10 rounded-full font-semibold flex text-white items-center justify-center cursor-pointer`}

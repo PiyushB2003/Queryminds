@@ -36,7 +36,7 @@ const Profile = () => {
                     </span>
                 </div>
                 {isOpenUser && (
-                    <div className="absolute top-full mt-2 right-0 w-full sm:w-64 md:w-80 lg:w-96 bg-[#0C1649] text-white rounded-xl shadow-lg z-50">
+                    <div className="absolute top-full mt-2 right-0 w-full sm:w-64 md:w-80 lg:w-96 bg-[#E9EEF6] dark:bg-[#0C1649] text-gray-600 dark:text-white rounded-xl shadow-lg z-50">
                         <ul className="py-6">
                             <li className="w-full flex justify-center">
                                 <p className='text-center'>{userEmail}</p>
@@ -55,7 +55,7 @@ const Profile = () => {
                                 </span>
                             </li>
                             <li
-                                className="pl-2 pr-4 py-4 mx-5 rounded-full transition-all bg-slate-700 hover:bg-slate-600 cursor-pointer flex justify-between items-center"
+                                className="pl-2 pr-4 py-4 mx-5 rounded-full transition-all bg-white hover:bg-[#E0E5EC] dark:bg-slate-700 dark:hover:bg-slate-600 cursor-pointer flex justify-between items-center"
                                 onClick={HandleLogout}
                             >
                                 <span className='w-full h-full flex items-center justify-center'>

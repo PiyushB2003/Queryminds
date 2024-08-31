@@ -107,7 +107,7 @@ const Pricing = () => {
 
   return (
     <>
-      <div className="bg-[#040B35] font-sans h-screen">
+      <div className="bg-white dark:bg-[#040B35] font-sans h-screen">
         <div className="h-[10%] p-5 flex items-center px-6 w-full text-white">
           <NavLink to="/">
             <span className="p-2 rounded-full bg-slate-700 flex items-center justify-center cursor-pointer hover:bg-slate-600">
@@ -116,10 +116,10 @@ const Pricing = () => {
           </NavLink>
         </div>
 
-        <div className="flex flex-wrap justify-center max-w-5xl mx-auto bg-[#040B35] mt-12">
+        <div className="flex flex-wrap justify-center max-w-5xl mx-auto bg-white dark:bg-[#040B35] mt-12">
           {pricingPlans.map((plan, index) => (
             <div key={index} className="w-full sm:w-1/2 md:w-1/3 p-4 mx-5">
-              <div className="bg-[#f6f8fa] hover:shadow-lg p-6 rounded-lg">
+              <div className=" bg-zinc-300 dark:bg-[#f6f8fa] hover:shadow-lg p-6 rounded-lg">
                 <div
                   className="relative text-center py-8 px-6"
                   style={{ backgroundColor: plan.backgroundColor }}

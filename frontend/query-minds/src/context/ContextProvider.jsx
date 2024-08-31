@@ -17,7 +17,7 @@ const ContextProvider = (props) => {
     const [expanded, setExpanded] = useState(false);
     const [userEmail, setUserEmail] = useState("");
     const [username, setUsername] = useState("");
-    const [btn, setBtn] = useState("light");
+    const [btn, setBtn] = useState(true);
     const [fullname, setFullname] = useState("");
     const [number, setNumber] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -130,12 +130,44 @@ const ContextProvider = (props) => {
         refetchOnWindowFocus: true,
     });
 
+    const useDarkMode = () => {
+        const [isDarkMode, setIsDarkMode] = useState(false);
+
+        useEffect(() => {
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            setIsDarkMode(mediaQuery.matches);
+
+            const handleChange = (event) => {
+                setIsDarkMode(event.matches);
+            };
+
+            mediaQuery.addEventListener('change', handleChange);
+            return () => mediaQuery.removeEventListener('change', handleChange);
+        }, []);
+
+        useEffect(() => {
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }, [isDarkMode]);
+
+        return isDarkMode;
+    };
+    useDarkMode()
+
+
     useEffect(() => {
         setUsername(localStorage.getItem("loggedInUser"));
         setFullname(localStorage.getItem("loggedInUser"));
         setUserEmail(localStorage.getItem("loggedInUserEmail"));
         setNumber(localStorage.getItem("ColorNumber"));
     }, []);
+
+    useEffect(() => {
+        document.documentElement.classList.toggle('dark', btn === true);
+    }, [btn]);
 
     const contextValue = {
         isPending,

@@ -32,7 +32,7 @@ const Header = () => {
         };
     }, []);
     return (
-        <div className={`w-full py-6 flex md:flex-row flex-col justify-between items-center sticky top-0 bg-[#040B35] z-50 transition-shadow duration-300 ${isScrolled ? 'shadow-xl' : ''}`}>
+        <div className={`w-full py-6 flex md:flex-row flex-col justify-between items-center sticky top-0 bg-white dark:bg-[#040B35] z-50 transition-shadow duration-300 ${isScrolled ? 'dark:shadow-xl shadow-lg' : 'dark:shadow-none shadow-md'}`}>
             <div className='w-full flex items-center justify-between'>
                 <div className='h-full flex items-center mx-3 justify-between'>
                     <span className='flex items-center flex-row mx-1 sm:mx-6 cursor-pointer'>
@@ -44,13 +44,13 @@ const Header = () => {
                         </NavLink>
                     </span>
                     <div className="md:flex items-center justify-center hidden">
-                        <span className="text-gray-500 cursor-pointer hover:text-white flex items-center mx-6 md:mx-2">
+                        <span className="cursor-pointer text-gray-500 dark:hover:text-white hover:text-black flex items-center mx-6 md:mx-2">
                             <NavLink to="/chatbot" className="flex items-center">
                                 {/* <AutoAwesomeRoundedIcon /> */}
                                 <span className="text-lg font-semibold ml-2">Ask anything</span>
                             </NavLink>
                         </span>
-                        <span className="text-gray-500 cursor-pointer hover:text-white flex items-center mx-6 md:mx-2">
+                        <span className="text-gray-500 dark:hover:text-white hover:text-black cursor-pointer flex items-center mx-6 md:mx-2">
                             <NavLink to="/pricing" className="flex items-center">
                                 {/* <AttachMoneyRoundedIcon /> */}
                                 <span className="text-lg font-semibold ml-2">Pricing</span>
@@ -61,13 +61,13 @@ const Header = () => {
                 </div>
                 <div className='flex items-center px-4 md:hidden'>
                     <span className='mx-1 sm:mx-4'>
-                        <button className='text-white flex items-center justify-center' onClick={() => setBtn(btn === "light" ? "dark" : "light")}>
+                        <button className='dark:text-white text-gray-600 flex items-center justify-center' onClick={() => setBtn(curr => !curr)}>
                             {
-                                btn === "light" ? <LightModeIcon /> : <DarkModeIcon />
+                                btn ? <LightModeIcon /> : <DarkModeIcon />
                             }
                         </button>
                     </span>
-                    <span className='mx-1 sm:mx-4 text-white trasition-all duration-500' onClick={() => setIsCLicked(isClicked === true ? false : true)}>
+                    <span className='mx-1 sm:mx-4 dark:text-white text-gray-600 trasition-all duration-500' onClick={() => setIsCLicked(isClicked === true ? false : true)}>
                         {
                             isClicked ? <CloseRoundedIcon /> : <MenuIcon />
                         }
@@ -77,18 +77,18 @@ const Header = () => {
             <div
                 className={`flex md:hidden flex-col w-full items-center justify-center mt-3 transition-all duration-500 ease-in-out overflow-hidden ${isClicked ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'}`}
             >
-                <span className='text-gray-500 mx-6 cursor-pointer hover:text-white flex items-center'>
+                <span className='text-gray-500 hover:text-black dark:hover:text-white  mx-6 cursor-pointer  flex items-center'>
                     <NavLink to="/chatbot" className="flex items-center">
                         <span className='text-lg mx-2 font-semibold'>Ask anything</span>
                     </NavLink>
                 </span>
-                <span className='flex text-gray-500 cursor-pointer items-center mx-6 hover:text-white'>
+                <span className='flex text-gray-500 hover:text-black dark:hover:text-white cursor-pointer items-center mx-6 hover:text-white'>
                     <NavLink to="/pricing" className="flex items-center">
                         <span className='text-lg mx-2 font-semibold'>Pricing</span>
                     </NavLink>
                 </span>
                 {
-                    isAuthenticated && <div className='flex items-center justify-center my-2 text-gray-500 border w-44 flex-col py-2'>
+                    isAuthenticated && <div className='flex items-center justify-center my-2 text-gray-500 hover:text-black dark:hover:text-white border w-44 flex-col py-2'>
                         <span className='flex transition-all duration-500 items-center w-full justify-center' onClick={() => setIsCLickedProfile(isClickedProfile === true ? false : true)}>
                             <span>
                                 <PersonIcon className=' scale-75' />
@@ -135,9 +135,9 @@ const Header = () => {
             <div className='h-full md:flex items-center mx-8 hidden'>
 
                 <span className='mr-3'>
-                    <button className='text-white bg-[#323a60] size-10 rounded-full flex items-center justify-center' onClick={() => setBtn(btn === "light" ? "dark" : "light")}>
+                    <button className='text-white bg-[#323a60] size-10 rounded-full flex items-center justify-center' onClick={() => setBtn(curr => !curr)}>
                         {
-                            btn === "light" ? <LightModeIcon /> : <DarkModeIcon />
+                            btn ? <LightModeIcon /> : <DarkModeIcon />
                         }
                     </button>
                 </span>
