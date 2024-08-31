@@ -41,7 +41,7 @@ const ChatPageSerachBar = () => {
     return (
         <>
             <div className=" bg-[#040B35] w-full flex flex-col items-center justify-center">
-                <div className={`w-[80%] bg-[#0c1649] py-2 flex justify-between flex-row rounded-full items-center ${isExpanding ? 'rounded-full' : 'rounded-full px-0'}`}>
+                <div className={`md:w-[80%] w-[90%] bg-[#0c1649] md:py-2 flex justify-between flex-row rounded-full items-center ${isExpanding ? 'rounded-full' : 'rounded-full px-0'}`}>
                     <form className='w-full flex justify-between flex-row rounded-full' onSubmit={handleSubmit}>
                         <textarea
                             ref={textareaRef}
@@ -54,16 +54,16 @@ const ChatPageSerachBar = () => {
                         />
 
                         <div className='flex text-white'>
-                            <span className='p-3 cursor-pointer hover:bg-gray-700 rounded-full flex justify-center items-center'>
+                            <span className='md:p-3 p-1 cursor-pointer hover:bg-gray-700 rounded-full flex justify-center items-center'>
                                 <MicIcon />
                             </span>
-                            <button type='submit' className='p-3 mr-3 cursor-pointer hover:bg-gray-700 rounded-full flex justify-center items-center'>
+                            <button type='submit' className='md:p-3 p-1 mr-3 cursor-pointer hover:bg-gray-700 rounded-full flex justify-center items-center'>
                                 <SendIcon />
                             </button>
                         </div>
                     </form>
                 </div>
-                <p className='text-sm text-white py-3'>QueryMinds can make mistakes, so double-check its responses.</p>
+                <p className='md:text-sm text-[12px] leading-4 text-white py-3'>QueryMinds can make mistakes, <span className='sm:hidden'>So check again</span> <span className='hidden sm:inline'>so double-check its responses.</span></p>
             </div>
         </>
     )

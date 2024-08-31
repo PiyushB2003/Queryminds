@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { Context } from './Context';
 import { v4 as uuidv4 } from 'uuid';
 import 'react-toastify/dist/ReactToastify.css';
 import { HandleError, HandleSuccess } from '../utils/Utils.js';
 import { useNavigate } from 'react-router-dom';
+import { useQuery, QueryClient } from '@tanstack/react-query';
 
 const ContextProvider = (props) => {
     const [text, setText] = useState("");
@@ -13,8 +14,10 @@ const ContextProvider = (props) => {
     const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
     const [resultData, setResultData] = useState("");
+    const [expanded, setExpanded] = useState(false);
     const [userEmail, setUserEmail] = useState("");
     const [username, setUsername] = useState("");
+    const [btn, setBtn] = useState("light");
     const [fullname, setFullname] = useState("");
     const [number, setNumber] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -91,6 +94,42 @@ const ContextProvider = (props) => {
         return Math.floor(Math.random() * 6) + 1;
     }
 
+    const handleClick = useCallback((title) => {
+        setRecentPrompt(title);
+    }, [setRecentPrompt]);
+
+    const { isPending, error, data } = useQuery({
+        queryKey: ["userChats"],
+        queryFn: async () => {
+            try {
+                const userId = localStorage.getItem("userId");
+                console.log("UserId is: ", userId);
+
+                if (!userId) throw new Error("User ID is missing");
+
+                const response = await fetch(`http://localhost:5000/api/userchats?userId=${userId}`, {
+                    credentials: "include",
+                });
+                console.log("This is response ", response);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error("HTTP error:", response.status, errorText);
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                console.log("API Response:", result);
+                return result;
+            } catch (err) {
+                console.error("Fetch error:", err);
+                throw err; // Rethrow error to be caught by React Query
+            }
+        },
+        refetchInterval: 5000,
+        refetchOnWindowFocus: true,
+    });
+
     useEffect(() => {
         setUsername(localStorage.getItem("loggedInUser"));
         setFullname(localStorage.getItem("loggedInUser"));
@@ -99,6 +138,9 @@ const ContextProvider = (props) => {
     }, []);
 
     const contextValue = {
+        isPending,
+        error,
+        data,
         ColorPicker,
         prevPrompts,
         recentPrompt,
@@ -112,6 +154,11 @@ const ContextProvider = (props) => {
         isPaymentDone,
         number,
         count,
+        expanded,
+        btn,
+        setBtn,
+        handleClick,
+        setExpanded,
         setCount,
         setNumber,
         setUserEmail,

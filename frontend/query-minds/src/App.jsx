@@ -32,8 +32,8 @@ function PrivateRoute({ element }) {
 function App() {
   return (
     <BrowserRouter>
-      <ContextProvider>
         <QueryClientProvider client={queryClient}>
+      <ContextProvider>
           <RefreshHandler />
           <Routes>
             <Route path='/' element={<Home />} />
@@ -44,8 +44,8 @@ function App() {
             <Route path='*' element={<Error />} />
           </Routes>
           <ToastContainer />
-        </QueryClientProvider>
       </ContextProvider>
+        </QueryClientProvider>
     </BrowserRouter>
   );
 }

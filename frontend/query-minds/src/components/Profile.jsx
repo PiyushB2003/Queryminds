@@ -26,7 +26,7 @@ const Profile = () => {
     }, []);
     return (
         <>
-            <div className='relative' ref={dropdownRefUser}>
+            <div className='relative hidden sm:block' ref={dropdownRefUser}>
                 <div onClick={() => setIsOpenUser((prev) => !prev)}>
                     <span
                         className={`size-10 rounded-full font-semibold flex text-white items-center justify-center cursor-pointer`}

@@ -33,14 +33,14 @@ const Plan = () => {
                     onClick={() => setIsOpen((prev) => !prev)}
                 >
                     <span>
-                        <h1 className="text-xl font-semibold">Queryminds</h1>
+                        <h1 className="text-lg md:text-xl font-semibold">Queryminds</h1>
                     </span>
                     <span>
                         {isOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
                     </span>
                 </div>
                 {isOpen && (
-                    <div className="absolute top-full mt-2 left-0 w-80 bg-[#0C1649] text-white rounded-xl shadow-lg">
+                    <div className="absolute top-full mt-2 md:left-0 sm:right-0 w-80 bg-[#0C1649] text-white rounded-xl shadow-lg">
                         <ul className="py-4">
                             <li className="pl-2 pr-4 py-2 mx-2 rounded-xl hover:bg-gray-700 cursor-pointer flex justify-between items-center">
                                 <span className='flex flex-row items-center'>

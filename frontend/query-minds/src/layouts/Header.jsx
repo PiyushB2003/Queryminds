@@ -13,11 +13,10 @@ import {
 import { Context } from '../context/Context.js';
 
 const Header = () => {
-    const [btn, setBtn] = useState("light");
     const [isClicked, setIsCLicked] = useState(false);
     const [isClickedProfile, setIsCLickedProfile] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const { isAuthenticated, userEmail, ColorPicker, HandleLogout, number, getInitials } = useContext(Context);
+    const { isAuthenticated, userEmail, btn, setBtn, ColorPicker, HandleLogout, number, getInitials } = useContext(Context);
     console.log(isAuthenticated);
 
 
