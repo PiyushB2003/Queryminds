@@ -108,10 +108,10 @@ const ChatPageMain = () => {
                 </>
             ) : (
                 <>
-                    <div className="w-full h-full scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-[#c4c7c5]  dark:scrollbar-thumb-slate-700 dark:scrollbar-track-[#0c1649] scrollbar-track-[#F0F4F9] overflow-y-auto text-white flex justify-center">
-                        <div className="w-[80%] h-full">
+                    <div className="w-full h-full scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-[#c4c7c5] overflow-x-hidden dark:scrollbar-thumb-slate-700 dark:scrollbar-track-[#0c1649] scrollbar-track-[#F0F4F9] overflow-y-auto text-white flex justify-center">
+                        <div className="w-[90%] sm:w-[80%] h-full">
                             <div className="flex justify-end my-5">
-                                <div className="flex text-gray-600 dark:text-white rounded-xl bg-zinc-300 dark:bg-slate-700 p-3 max-w-[80%] w-auto items-center">
+                                <div className="flex text-gray-600 dark:text-white rounded-xl bg-zinc-300 dark:bg-slate-700 p-3 max-w-full w-auto items-center">
                                     <span className="mx-1 w-full">
                                         <pre className="whitespace-pre-wrap break-words">
                                             <p className="text-justify overflow-hidden break-words">
@@ -131,21 +131,23 @@ const ChatPageMain = () => {
                                         className="w-10 h-10 rounded-full border border-zinc-500 p-[5px] mx-2"
                                         alt="Icon"
                                     />
-                                    <div className="ml-2 max-w-full overflow-x-auto text-black dark:text-white">
+                                    <div className="ml-2 max-w-full overflow-x-hidden text-black dark:text-white">
                                         {textBlocks.map((text, index) => (
                                             <React.Fragment key={index}>
                                                 <Markdown className="result break-words">
                                                     {text}
                                                 </Markdown>
                                                 {codeBlocks[index] && (
-                                                    <SyntaxHighlighter
-                                                        key={index}
-                                                        className="break-words max-w-full overflow-x-auto rounded-xl"
-                                                        style={btn ? dracula : coldarkCold}
-                                                        language={codeBlocks[index].language}
-                                                    >
-                                                        {codeBlocks[index].code}
-                                                    </SyntaxHighlighter>
+                                                    <div className="overflow-x-auto w-full">
+                                                        <SyntaxHighlighter
+                                                            key={index}
+                                                            className="break-words rounded-xl"
+                                                            style={btn ? dracula : coldarkCold}
+                                                            language={codeBlocks[index].language}
+                                                        >
+                                                            {codeBlocks[index].code}
+                                                        </SyntaxHighlighter>
+                                                    </div>
                                                 )}
                                             </React.Fragment>
                                         ))}
@@ -154,6 +156,7 @@ const ChatPageMain = () => {
                             )}
                         </div>
                     </div>
+
                 </>
             )}
         </>
